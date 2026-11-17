@@ -16,7 +16,7 @@
   <g clip-path="url(#type)">
     <text x="500" y="102" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="36" font-weight="600" fill="#7ee2a8">&gt; C++ · macOS · Apple Silicon</text>
   </g>
-  <rect x="808" y="76" width="4" height="34" fill="#7ee2a8">
+  <rect x="828" y="76" width="4" height="34" fill="#7ee2a8">
     <animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite"/>
   </rect>
 </svg>
