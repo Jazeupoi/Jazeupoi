@@ -8,17 +8,17 @@
     </pattern>
     <clipPath id="type"><rect x="0" y="0" height="180" width="0">
       <animate attributeName="width" from="0" to="1000" dur="3s" begin="0.4s" fill="freeze" calcMode="discrete"
-        values="0;140;200;260;320;380;440;500;560;620;680;740;800;1000" keyTimes="0;0.07;0.14;0.21;0.28;0.35;0.42;0.5;0.57;0.64;0.71;0.78;0.86;1"/>
+        values="0;252;266;302;338;374;410;446;482;518;554;590;662;1000" keyTimes="0;0.07;0.14;0.21;0.28;0.35;0.42;0.5;0.57;0.64;0.71;0.78;0.86;1"/>
     </rect></clipPath>
   </defs>
   <rect width="1000" height="180" rx="14" fill="url(#bg)"/>
   <rect width="1000" height="180" rx="14" fill="url(#grid)"/>
   <g clip-path="url(#type)">
-    <text x="500" y="102" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="36" font-weight="600" fill="#7ee2a8">&gt; C++ · macOS · Apple Silicon</text>
+    <text x="500" y="102" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="36" font-weight="600" fill="#7ee2a8">&gt; C++ · macOS · Windows</text>
   </g>
-  <rect x="186" y="76" width="4" height="34" fill="#7ee2a8">
+  <rect x="252" y="76" width="4" height="34" fill="#7ee2a8">
     <animate attributeName="x" dur="3s" begin="0.4s" fill="freeze" calcMode="discrete"
-      values="186;186;200;260;320;380;440;500;560;620;680;740;800;828" keyTimes="0;0.07;0.14;0.21;0.28;0.35;0.42;0.5;0.57;0.64;0.71;0.78;0.86;1"/>
+      values="252;252;266;302;338;374;410;446;482;518;554;590;662;752" keyTimes="0;0.07;0.14;0.21;0.28;0.35;0.42;0.5;0.57;0.64;0.71;0.78;0.86;1"/>
     <animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite"/>
   </rect>
 </svg>
