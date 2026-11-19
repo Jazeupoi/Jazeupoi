@@ -27,9 +27,12 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 
 ### Game reports
 
-| Game | Result on Windows / RTX 2060 |
+| Game | Result |
 |---|---|
-| [Clone Hero: Encore](https://github.com/boykopovar/AnyPS5/discussions/23570) | First report in AnyPS5: menu, song list and a song at ~120 FPS, audio checked against the song's stems |
-| [Afterglow](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19730524) | Still stops before the first frame with a warm cache on NVIDIA (on AMD a warm cache gets past it) |
+| [Clone Hero: Encore](https://github.com/boykopovar/AnyPS5/discussions/23570) | First report in AnyPS5: menu, song list and a song at ~120 FPS on Windows / RTX 2060, audio checked against the song's stems |
+| [Afterglow](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19730524) | Still stops before the first frame with a warm cache on Windows / RTX 2060 (on AMD a warm cache gets past it) |
+| [vkQuake](https://github.com/boykopovar/AnyPS5/pull/21708#pullrequestreview-5956522777) | Black screen on `main` on NVIDIA; with #21708 it loads and plays (review) |
+| [SuperTuxKart](https://github.com/boykopovar/AnyPS5/discussions/17047#discussioncomment-19662997) | Drawn purple on macOS and Windows / NVIDIA; traced to #16053; #20845 fixes it (open) |
+| [Syobon Action](https://github.com/boykopovar/AnyPS5/discussions/5932#discussioncomment-19661388) | Slow on macOS; cause found, fix in #21766 (7.5 → 29.5 FPS, approved) |
 
 I also test other contributors' pull requests on macOS and Windows, with Vulkan validation and negative controls.
