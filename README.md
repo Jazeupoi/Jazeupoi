@@ -30,6 +30,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | Game | Result |
 |---|---|
 | [Clone Hero: Encore](https://github.com/boykopovar/AnyPS5/discussions/23570) | First report in AnyPS5: menu, song list and a song at ~120 FPS on Windows / RTX 2060, audio checked against the song's stems |
+| [SudokuZen](https://github.com/boykopovar/AnyPS5/discussions/12236#discussioncomment-19745687) | Quits at its first draw whenever NVIDIA's driver shader cache is empty (4/4 runs; 5/5 fine with a warm cache): the #4399 shader still hits ps5-opengl's 2 s wait on `main` |
 | [Afterglow](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19730524) | Still stops before the first frame with a warm cache on Windows / RTX 2060 (on AMD a warm cache gets past it) |
 | [vkQuake](https://github.com/boykopovar/AnyPS5/pull/21708#pullrequestreview-5956522777) | Black screen on `main` on NVIDIA; with #21708 it loads and plays (review) |
 | [SuperTuxKart](https://github.com/boykopovar/AnyPS5/discussions/17047#discussioncomment-19662997) | Drawn purple on macOS and Windows / NVIDIA; traced to #16053; #20845 fixes it (open) |
