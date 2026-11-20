@@ -25,6 +25,12 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 
 ✅ merged · 👍 approved · 🟡 in review
 
+### Bug reports
+
+| Issue | Found |
+|---|---|
+| [#23708](https://github.com/boykopovar/AnyPS5/issues/23708) | `agc_storage_write_back_host_retile` failed 3 runs in 4 on Windows / RTX 2060; bisected to the pull request that added it. The cause is a race in the test; the fix, [#23751](https://github.com/boykopovar/AnyPS5/pull/23751), is in review |
+
 ### Game reports
 
 | Game | Result |
