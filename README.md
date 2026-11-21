@@ -19,7 +19,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 |---|---|
 | 🎮 | Syobon Action from 7.5 to 29.5 FPS under Rosetta ([#21766](https://github.com/boykopovar/AnyPS5/pull/21766), merged) |
 | 🎮 | osu! no longer closes 2 s after launch on macOS ([#24792](https://github.com/boykopovar/AnyPS5/pull/24792), merged); with #17611 a map plays at 55–60 FPS |
-| 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091), in review) |
+| 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091), approved) |
 | 🧪 | 8 titles that stop on mesh shaders start on macOS with #17611 ([review](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487)) |
 | 🧪 | Clone Hero: Encore, first report in AnyPS5: plays at ~120 FPS on Windows / RTX 2060 ([report](https://github.com/boykopovar/AnyPS5/discussions/23570)) |
 
@@ -33,16 +33,16 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 🟡 | [#24967](https://github.com/boykopovar/AnyPS5/pull/24967) | Relinker: macOS loads games at 0x400000 like Linux and Windows (Ruffle Flash no longer crashes when its imports load) |
 | 🟡 | [#25017](https://github.com/boykopovar/AnyPS5/pull/25017) | libkernel: `SOCK_SEQPACKET` socketpairs on macOS (Parallax Browser stopped 2 s after launch; now gets past its socket probe) |
 | 🟡 | [#25031](https://github.com/boykopovar/AnyPS5/pull/25031) | Relinker: macOS loads `.sprx` dependencies and `libkernel_sys` (Kodi stopped before starting; now runs its own code) |
-| 🟡 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device) |
-| 🟡 | [#25093](https://github.com/boykopovar/AnyPS5/pull/25093) | libwebrtc: `main` builds again with Apple clang (a `const` cast in `RtpPacketReceived` stopped the macOS build) |
+| 👍 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device) |
 
 👍 approved · 🟡 in review
 
 <details>
-<summary><b>Merged pull requests (9)</b></summary>
+<summary><b>Merged pull requests (10)</b></summary>
 
 | | Pull request | What it does |
 |---|---|---|
+| ✅ | [#25093](https://github.com/boykopovar/AnyPS5/pull/25093) | libwebrtc: `main` builds again with Apple clang (a `const` cast in `RtpPacketReceived` stopped the macOS build) |
 | ✅ | [#24792](https://github.com/boykopovar/AnyPS5/pull/24792) | Relinker: a macOS game can `mprotect` its own image (osu! closed 2 s after launch on macOS) |
 | ✅ | [#21972](https://github.com/boykopovar/AnyPS5/pull/21972) | AGC: fewer label stores on macOS (SuperTuxKart frame time 147 → 132 ms) |
 | ✅ | [#21766](https://github.com/boykopovar/AnyPS5/pull/21766) | Relinker: Syobon Action from 7.5 to 29.5 FPS under Rosetta |
