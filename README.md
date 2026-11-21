@@ -41,11 +41,17 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 |---|---|
 | [#23708](https://github.com/boykopovar/AnyPS5/issues/23708) | `agc_storage_write_back_host_retile` failed 3 runs in 4 on Windows / RTX 2060; bisected to the pull request that added it. The cause is a race in the test; the fix, [#23751](https://github.com/boykopovar/AnyPS5/pull/23751), is in review |
 | [#24728](https://github.com/boykopovar/AnyPS5/issues/24728) | SuperTuxKart at ~10 FPS on macOS: one GPU round trip per draw, and Rosetta's cost of re-protecting watched memory (~0.2 ms per MiB); a 1 MiB fault-ahead block gains ~3–8 % |
+| [#22565](https://github.com/boykopovar/AnyPS5/issues/22565) | `agc_driver` took up to 123 s on Windows because its self-linking buffer check ran to the timeout; the fix, [#22572](https://github.com/boykopovar/AnyPS5/pull/22572), is approved |
+| [#22270](https://github.com/boykopovar/AnyPS5/issues/22270) | macOS: guest paths near `PATH_MAX` fail with `ENAMETOOLONG` because the host prefix makes them longer |
+| [#22317](https://github.com/boykopovar/AnyPS5/issues/22317) | macOS: `sceNetConnect` with a timeout to a bound, non-listening loopback port returned `EAGAIN` (closed, resolved) |
 
 ### Game reports
 
 | Game | Result |
 |---|---|
+| [15 mesh-shader titles](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487) | With #17611 on macOS, 8 that stopped on `main` now start (SpeedBreaker, PSXS5, SwanStation, DevilutionX, PSFlyCast, OGBox, Mario 64, FBNeo); the four N64 recompilations ask for 8x MSAA, which the Mac does not offer |
+| [Crux2](https://github.com/boykopovar/AnyPS5/discussions/18182#discussioncomment-19796785) | First macOS report: needs `ROSETTA_ADVERTISE_AVX=1` to pass its AVX2 check, then stops at its first present on mesh shaders (#17611) |
+| [Afterglow](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19797074) | macOS: the Metal compiler runs out of memory on a 30 MB MSL shader; `APS5_FAST_F32=1` shrinks it to 7–9 MB and it compiles, but the title still exits before its first frame |
 | [osu! ProjectCadence](https://github.com/boykopovar/AnyPS5/discussions/17969#discussioncomment-19788361) | First macOS report: closed after 2 s; fixed the cause in #24792 (merged), and with #17611 a map plays at 55–60 FPS on the M4 |
 | [vkQuake, ccleste, PSteroid5](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6002155105) | First run of #17611 with games on macOS: vkQuake plays (~44 FPS); the other two still need barycentrics (#9387) |
 | [Clone Hero: Encore](https://github.com/boykopovar/AnyPS5/discussions/23570) | First report in AnyPS5: menu, song list and a song at ~120 FPS on Windows / RTX 2060, audio checked against the song's stems |
