@@ -26,6 +26,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 👍 | [#24201](https://github.com/boykopovar/AnyPS5/pull/24201) | Shader: a barrier before a scratch pool slot is released on MoltenVK (`agc_driver_scratch_pool` failed 17 of 20 runs on the M4; 50 of 50 pass) |
 | 👍 | [#24320](https://github.com/boykopovar/AnyPS5/pull/24320) | libc: `floorl`, `ceill` and `truncl` raise inexact when they round on macOS, as the console does |
 | 👍 | [#24311](https://github.com/boykopovar/AnyPS5/pull/24311) | `guest_math`: read only the standard exception flags (failed on every macOS run) |
+| 🟡 | [#24792](https://github.com/boykopovar/AnyPS5/pull/24792) | Relinker: a macOS game can `mprotect` its own image (osu! closed 2 s after launch on macOS) |
 
 ✅ merged · 👍 approved · 🟡 in review
 
@@ -40,6 +41,8 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 
 | Game | Result |
 |---|---|
+| [osu! ProjectCadence](https://github.com/boykopovar/AnyPS5/discussions/17969#discussioncomment-19788361) | First macOS report: closed after 2 s; fixed the cause in #24792, and with #17611 a map plays at 55–60 FPS on the M4 |
+| [vkQuake, ccleste, PSteroid5](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6002155105) | First run of #17611 with games on macOS: vkQuake plays (~44 FPS); the other two still need barycentrics (#9387) |
 | [Clone Hero: Encore](https://github.com/boykopovar/AnyPS5/discussions/23570) | First report in AnyPS5: menu, song list and a song at ~120 FPS on Windows / RTX 2060, audio checked against the song's stems |
 | [SudokuZen](https://github.com/boykopovar/AnyPS5/discussions/12236#discussioncomment-19745687) | Quits at its first draw whenever NVIDIA's driver shader cache is empty (4/4 runs; 5/5 fine with a warm cache): the #4399 shader still hits ps5-opengl's 2 s wait on `main` |
 | [Afterglow](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19730524) | Still stops before the first frame with a warm cache on Windows / RTX 2060 (on AMD a warm cache gets past it) |
