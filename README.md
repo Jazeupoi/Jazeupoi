@@ -20,6 +20,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 🎮 | Syobon Action from 7.5 to 29.5 FPS under Rosetta ([#21766](https://github.com/boykopovar/AnyPS5/pull/21766), merged) |
 | 🎮 | osu! no longer closes 2 s after launch on macOS ([#24792](https://github.com/boykopovar/AnyPS5/pull/24792), merged); with #17611 a map plays at 55–60 FPS |
 | 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091), approved) |
+| 🎮 | Half-Life (XashPS5, Uplink demo) reaches its first map on macOS with #17611 ([#25658](https://github.com/boykopovar/AnyPS5/pull/25658), in review) |
 | 🧪 | 8 titles that stop on mesh shaders start on macOS with #17611 ([review](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487)) |
 | 🧪 | Clone Hero: Encore, first report in AnyPS5: plays at ~120 FPS on Windows / RTX 2060 ([report](https://github.com/boykopovar/AnyPS5/discussions/23570)) |
 
@@ -33,6 +34,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 🟡 | [#24967](https://github.com/boykopovar/AnyPS5/pull/24967) | Relinker: macOS loads games at 0x400000 like Linux and Windows (Ruffle Flash no longer crashes when its imports load) |
 | 🟡 | [#25017](https://github.com/boykopovar/AnyPS5/pull/25017) | libkernel: `SOCK_SEQPACKET` socketpairs on macOS (Parallax Browser stopped 2 s after launch; now gets past its socket probe) |
 | 👍 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device) |
+| 🟡 | [#25658](https://github.com/boykopovar/AnyPS5/pull/25658) | Shader: link user-data tails through copied pointers, branching bodies and geometry fronts (XashPS5 stopped at three shader tails; Half-Life now draws its first map) |
 
 👍 approved · 🟡 in review
 
