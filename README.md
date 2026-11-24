@@ -19,7 +19,8 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 |---|---|
 | 🎮 | Syobon Action from 7.5 to 29.5 FPS under Rosetta ([#21766](https://github.com/boykopovar/AnyPS5/pull/21766), merged) |
 | 🎮 | osu! no longer closes 2 s after launch on macOS ([#24792](https://github.com/boykopovar/AnyPS5/pull/24792), merged); with #17611 a map plays at 55–60 FPS |
-| 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091), approved) |
+| 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091), in review) |
+| 🎮 | PS5SX2 (PCSX2 port): its PS2 system menu starts and reaches its first screen on Windows / RTX 2060 ([#26600](https://github.com/boykopovar/AnyPS5/pull/26600) fixes one of its three stops; [#1413](https://github.com/boykopovar/AnyPS5/issues/1413#issuecomment-7127754451) has the second) |
 | 🎮 | Half-Life (XashPS5, Uplink demo) reaches its first map on macOS with #17611 and on Windows / RTX 2060 at 60 FPS ([#25658](https://github.com/boykopovar/AnyPS5/pull/25658), in review) |
 | 🔍 | Afterglow on NVIDIA: found that #25434 broke `APS5_ASYNC_PIPELINE_WORDS` ([#26186](https://github.com/boykopovar/AnyPS5/issues/26186)); the maintainer's fix keeps it running in 2 of 2 runs ([review](https://github.com/boykopovar/AnyPS5/pull/26196#pullrequestreview-6023222290)) |
 | 🧪 | 8 titles that stop on mesh shaders start on macOS with #17611 ([review](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487)) |
@@ -34,8 +35,11 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 👍 | [#24311](https://github.com/boykopovar/AnyPS5/pull/24311) | `guest_math`: read only the standard exception flags (failed on every macOS run) |
 | 👍 | [#24967](https://github.com/boykopovar/AnyPS5/pull/24967) | Relinker: macOS loads games at 0x400000 like Linux and Windows (Ruffle Flash no longer crashes when its imports load); a reviewer's edge case for low `--macos-fixed-base` addresses is fixed and tested |
 | 🔧 | [#25017](https://github.com/boykopovar/AnyPS5/pull/25017) | libkernel: `SOCK_SEQPACKET` socketpairs on macOS (Parallax Browser stopped 2 s after launch; now gets past its socket probe); the change the reviewer asked for is pushed, with a test that hung without it |
-| 👍 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device) |
+| 🔧 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device); limited to macOS's sealed range after a reviewer's Windows run, with a Windows check |
 | 🟡 | [#25658](https://github.com/boykopovar/AnyPS5/pull/25658) | Shader: link user-data tails through copied pointers, branching bodies and geometry fronts (XashPS5 stopped at three shader tails; Half-Life now draws its first map). Labelled `unblocks title`; tests confirmed by four other contributors (NVIDIA on Windows and Linux, AMD RDNA4), and Half-Life checked on Windows / RTX 2060 |
+
+| 🟡 | [#26593](https://github.com/boykopovar/AnyPS5/pull/26593) | Shader: an image the same shader stores to is read back through its storage binding, so the load sees the new value (6 formats tested on Windows / RTX 2060) |
+| 🟡 | [#26600](https://github.com/boykopovar/AnyPS5/pull/26600) | AGC: NGG vertex programs can draw line lists (PS5SX2 stopped as soon as its PS2 system menu started; now draws it) |
 
 👍 approved · 🟡 in review · 🔧 changes made, waiting for re-review
 
@@ -73,10 +77,11 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 </details>
 
 <details>
-<summary><b>Game reports (10)</b></summary>
+<summary><b>Game reports (11)</b></summary>
 
 | Game | Result |
 |---|---|
+| [PS5SX2](https://github.com/boykopovar/AnyPS5/issues/1413#issuecomment-7127754451) | Its PS2 system menu stops at three points on Windows: a SIGPROF from its own profiler, a `v_interp_mov` P10 read (#1413) and NGG line lists (fixed in #26600). With the other two bypassed locally it reaches its language screen, at ~2 FPS |
 | [15 mesh-shader titles](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487) | With #17611 on macOS, 8 that stopped on `main` now start (SpeedBreaker, PSXS5, SwanStation, DevilutionX, PSFlyCast, OGBox, Mario 64, FBNeo); the four N64 recompilations ask for 8x MSAA, which the Mac does not offer |
 | [Crux2](https://github.com/boykopovar/AnyPS5/discussions/18182#discussioncomment-19796785) | First macOS report: needs `ROSETTA_ADVERTISE_AVX=1` to pass its AVX2 check, then stops at its first present on mesh shaders (#17611) |
 | Afterglow ([macOS](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19797074), [Windows](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19730524), [cause on NVIDIA](https://github.com/boykopovar/AnyPS5/discussions/13019#discussioncomment-19830592)) | macOS: the Metal compiler runs out of memory on a 30 MB MSL shader; `APS5_FAST_F32=1` shrinks it to 7–9 MB and it compiles, but the title still exits before its first frame. Windows / RTX 2060: the NVIDIA driver takes ~40 s to compile the pipeline of its large pixel shader, while the title gives up after 2 s, so the compile never finishes or gets cached; once it has been compiled, the title starts at 60 FPS |
