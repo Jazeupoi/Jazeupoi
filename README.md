@@ -20,7 +20,8 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 🎮 | Syobon Action from 7.5 to 29.5 FPS under Rosetta ([#21766](https://github.com/boykopovar/AnyPS5/pull/21766), merged) |
 | 🎮 | osu! no longer closes 2 s after launch on macOS ([#24792](https://github.com/boykopovar/AnyPS5/pull/24792), merged); with #17611 a map plays at 55–60 FPS |
 | 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091), in review) |
-| 🎮 | PS5SX2 (PCSX2 port): its PS2 system menu starts and reaches its first screen on Windows / RTX 2060 ([#26600](https://github.com/boykopovar/AnyPS5/pull/26600) fixes one of its three stops; [#1413](https://github.com/boykopovar/AnyPS5/issues/1413#issuecomment-7127754451) has the second) |
+| 🎮 | PS5SX2 (PCSX2 port): its PS2 system menu starts and reaches its first screen on Windows / RTX 2060 ([#26600](https://github.com/boykopovar/AnyPS5/pull/26600) fixes one of its three stops; [#27327](https://github.com/boykopovar/AnyPS5/pull/27327) fixes the second, from [our report](https://github.com/boykopovar/AnyPS5/issues/1413#issuecomment-7127754451)) |
+| 🎮 | ProsperoCraft (Minecraft Java launcher): its Java runtime starts on Windows / RTX 2060 (4 of 4 runs; 0 of 4 before) ([#27330](https://github.com/boykopovar/AnyPS5/pull/27330), in review) |
 | 🎮 | Half-Life (XashPS5, Uplink demo) reaches its first map on macOS with #17611 and on Windows / RTX 2060 at 60 FPS ([#25658](https://github.com/boykopovar/AnyPS5/pull/25658), merged) |
 | 🔍 | Afterglow on NVIDIA: found that #25434 broke `APS5_ASYNC_PIPELINE_WORDS` ([#26186](https://github.com/boykopovar/AnyPS5/issues/26186)); the maintainer's fix keeps it running in 2 of 2 runs ([review](https://github.com/boykopovar/AnyPS5/pull/26196#pullrequestreview-6023222290)) |
 | 🧪 | 8 titles that stop on mesh shaders start on macOS with #17611 ([review](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487)) |
@@ -35,10 +36,11 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 👍 | [#24311](https://github.com/boykopovar/AnyPS5/pull/24311) | `guest_math`: read only the standard exception flags (failed on every macOS run) |
 | 👍 | [#24967](https://github.com/boykopovar/AnyPS5/pull/24967) | Relinker: macOS loads games at 0x400000 like Linux and Windows (Ruffle Flash no longer crashes when its imports load); a reviewer's edge case for low `--macos-fixed-base` addresses is fixed and tested |
 | 🔧 | [#25017](https://github.com/boykopovar/AnyPS5/pull/25017) | libkernel: `SOCK_SEQPACKET` socketpairs on macOS (Parallax Browser stopped 2 s after launch; now gets past its socket probe) |
-| 🔧 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device); limited to macOS's sealed range after a reviewer's Windows run, with a Windows check |
+| 👍 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device); limited to macOS's sealed range after a reviewer's Windows run, with a Windows check |
 | 👍 | [#26593](https://github.com/boykopovar/AnyPS5/pull/26593) | Shader: an image the same shader stores to is read back through its storage binding, so the load sees the new value (6 formats tested on Windows / RTX 2060 and RTX 4070; the test skips them on GPUs that can't read them this way) |
 | 👍 | [#26600](https://github.com/boykopovar/AnyPS5/pull/26600) | AGC: NGG vertex programs can draw line lists (PS5SX2 stopped as soon as its PS2 system menu started; now draws it) |
 | 🔧 | [#26653](https://github.com/boykopovar/AnyPS5/pull/26653) | libkernel: `SA_SIGINFO` handlers run for `SIGSEGV` and `SIGBUS` faults (PS5SX2's fastmem crashed 3 of 3 times as its PS2 system menu started; ran 8 min without an error); a Linux fix the reviewers asked for is pushed |
+| 🟡 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: memory hints inside the system reserved range are placed at the hint on Windows (ProsperoCraft's Java heap could not be reserved; now the JVM starts) |
 
 👍 approved · 🟡 in review · 🔧 changes made, waiting for re-review
 
