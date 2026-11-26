@@ -7,18 +7,18 @@
       <path d="M28 0H0V28" fill="none" stroke="#39d353" stroke-opacity="0.08"/>
     </pattern>
     <clipPath id="type"><rect x="0" y="0" height="180" width="0">
-      <animate attributeName="width" from="0" to="1000" dur="3s" begin="0.4s" fill="freeze" calcMode="discrete"
-        values="0;252;266;302;338;374;410;446;482;518;554;590;662;1000" keyTimes="0;0.07;0.14;0.21;0.28;0.35;0.42;0.5;0.57;0.64;0.71;0.78;0.86;1"/>
+      <animate attributeName="width" from="0" to="1000" dur="3.6s" begin="0.4s" fill="freeze" calcMode="discrete"
+        values="0;166;209;252;295;339;382;425;468;511;554;597;640;684;727;770;813;1000" keyTimes="0;0.059;0.118;0.176;0.235;0.294;0.353;0.412;0.471;0.529;0.588;0.647;0.706;0.765;0.824;0.882;0.941;1"/>
     </rect></clipPath>
   </defs>
   <rect width="1000" height="180" rx="14" fill="url(#bg)"/>
   <rect width="1000" height="180" rx="14" fill="url(#grid)"/>
   <g clip-path="url(#type)">
-    <text x="500" y="102" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="36" font-weight="600" fill="#7ee2a8">&gt; C++ · macOS · Windows<gt; C++ · macOS · Windows · Linux</text>
+    <text x="500" y="102" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="36" font-weight="600" fill="#7ee2a8">&gt; C++ · macOS · Windows · Linux</text>
   </g>
-  <rect x="252" y="76" width="4" height="34" fill="#7ee2a8">
-    <animate attributeName="x" dur="3s" begin="0.4s" fill="freeze" calcMode="discrete"
-      values="252;252;266;302;338;374;410;446;482;518;554;590;662;752" keyTimes="0;0.07;0.14;0.21;0.28;0.35;0.42;0.5;0.57;0.64;0.71;0.78;0.86;1"/>
+  <rect x="166" y="76" width="4" height="34" fill="#7ee2a8">
+    <animate attributeName="x" dur="3.6s" begin="0.4s" fill="freeze" calcMode="discrete"
+      values="166;166;209;252;295;339;382;425;468;511;554;597;640;684;727;770;813;835" keyTimes="0;0.059;0.118;0.176;0.235;0.294;0.353;0.412;0.471;0.529;0.588;0.647;0.706;0.765;0.824;0.882;0.941;1"/>
     <animate attributeName="opacity" values="1;0;1" dur="0.9s" repeatCount="indefinite"/>
   </rect>
 </svg>
