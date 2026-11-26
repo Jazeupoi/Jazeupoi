@@ -21,7 +21,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 🎮 | osu! no longer closes 2 s after launch on macOS ([#24792](https://github.com/boykopovar/AnyPS5/pull/24792), merged); with #17611 a map plays at 55–60 FPS |
 | 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091), in review) |
 | 🎮 | PS5SX2 (PCSX2 port): its PS2 system menu starts and reaches its first screen on Windows / RTX 2060 ([#26600](https://github.com/boykopovar/AnyPS5/pull/26600) fixes one of its three stops; [#27327](https://github.com/boykopovar/AnyPS5/pull/27327) fixes the second, from [our report](https://github.com/boykopovar/AnyPS5/issues/1413#issuecomment-7127754451)) |
-| 🎮 | ProsperoCraft (Minecraft Java launcher): its Java runtime starts on Windows / RTX 2060 (4 of 4 runs; 0 of 4 before) ([#27330](https://github.com/boykopovar/AnyPS5/pull/27330), in review) |
+| 🎮 | ProsperoCraft (Minecraft Java launcher) on Windows / RTX 2060: its Java runtime starts (4 of 4 runs; 0 of 4 before) ([#27330](https://github.com/boykopovar/AnyPS5/pull/27330), approved), and its downloads finish (all 5 stopped before) ([#26653](https://github.com/boykopovar/AnyPS5/pull/26653#issuecomment-7175929810)) |
 | 🎮 | Half-Life (XashPS5, Uplink demo) reaches its first map on macOS with #17611 and on Windows / RTX 2060 at 60 FPS ([#25658](https://github.com/boykopovar/AnyPS5/pull/25658), merged) |
 | 🔍 | Afterglow on NVIDIA: found that #25434 broke `APS5_ASYNC_PIPELINE_WORDS` ([#26186](https://github.com/boykopovar/AnyPS5/issues/26186)); the maintainer's fix keeps it running in 2 of 2 runs ([review](https://github.com/boykopovar/AnyPS5/pull/26196#pullrequestreview-6023222290)) |
 | 🧪 | 8 titles that stop on mesh shaders start on macOS with #17611 ([review](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487)) |
@@ -39,8 +39,8 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 👍 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device); limited to macOS's sealed range after a reviewer's Windows run, with a Windows check |
 | 👍 | [#26593](https://github.com/boykopovar/AnyPS5/pull/26593) | Shader: an image the same shader stores to is read back through its storage binding, so the load sees the new value (6 formats tested on Windows / RTX 2060 and RTX 4070; the test skips them on GPUs that can't read them this way) |
 | 👍 | [#26600](https://github.com/boykopovar/AnyPS5/pull/26600) | AGC: NGG vertex programs can draw line lists (PS5SX2 stopped as soon as its PS2 system menu started; now draws it) |
-| 🔧 | [#26653](https://github.com/boykopovar/AnyPS5/pull/26653) | libkernel: `SA_SIGINFO` handlers run for `SIGSEGV` and `SIGBUS` faults (PS5SX2's fastmem crashed 3 of 3 times as its PS2 system menu started; ran 8 min without an error); a Linux fix the reviewers asked for is pushed |
-| 🟡 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: memory hints inside the system reserved range are placed at the hint on Windows (ProsperoCraft's Java heap could not be reserved; now the JVM starts) |
+| 🔧 | [#26653](https://github.com/boykopovar/AnyPS5/pull/26653) | libkernel: `SA_SIGINFO` handlers run for `SIGSEGV` and `SIGBUS` faults (PS5SX2's fastmem crashed 3 of 3 times as its PS2 system menu started; ran 8 min without an error; ProsperoCraft's Java runtime stopped in 5 of 5 downloads, now downloads all 576 MB); a Linux fix the reviewers asked for is pushed, and it is tested together with #27140 |
+| 👍 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: memory hints inside the system reserved range are placed at the hint on Windows (ProsperoCraft's Java heap could not be reserved; now the JVM starts) |
 
 👍 approved · 🟡 in review · 🔧 changes made, waiting for re-review
 
@@ -65,10 +65,11 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 </details>
 
 <details>
-<summary><b>Bug reports (6)</b></summary>
+<summary><b>Bug reports (7)</b></summary>
 
 | Issue | Found |
 |---|---|
+| [#27336](https://github.com/boykopovar/AnyPS5/issues/27336) | Windows: once an elevated process creates `%TEMP%\AnyPS5`, unelevated runs that use named shared memory abort with "Access is denied" until the directory is removed by hand |
 | [#26186](https://github.com/boykopovar/AnyPS5/issues/26186) | Since #25434, `APS5_ASYNC_PIPELINE_WORDS` no longer defers a slow first-visit pipeline, so Afterglow exits again on NVIDIA (4 of 4 runs; 3 of 3 run with #25434 reverted); the maintainer's fix, [#26196](https://github.com/boykopovar/AnyPS5/pull/26196), keeps it running |
 | [#23708](https://github.com/boykopovar/AnyPS5/issues/23708) | `agc_storage_write_back_host_retile` failed 3 runs in 4 on Windows / RTX 2060; bisected to the pull request that added it. The cause is a race in the test; the fix, [#23751](https://github.com/boykopovar/AnyPS5/pull/23751), passes on five other NVIDIA cards and is in review |
 | [#24728](https://github.com/boykopovar/AnyPS5/issues/24728) | SuperTuxKart at ~10 FPS on macOS: one GPU round trip per draw, and Rosetta's cost of re-protecting watched memory (~0.2 ms per MiB); a 1 MiB fault-ahead block gains ~3–8 % |
