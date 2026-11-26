@@ -1,17 +1,18 @@
 <p align="center">
-  <img src="banner.svg" alt="C++ · macOS · Windows" width="100%">
+  <img src="banner.svg" alt="C++ · macOS · Windows · Linux" width="100%">
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" alt="C++">
   <img src="https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="macOS">
   <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white" alt="Windows">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
   <img src="https://img.shields.io/badge/Vulkan-AC162C?style=for-the-badge&logo=vulkan&logoColor=white" alt="Vulkan">
 </p>
 
 ### Contributing to [AnyPS5](https://github.com/boykopovar/AnyPS5)
 
-Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Windows with an NVIDIA RTX 2060.
+Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK), on Windows with an NVIDIA RTX 2060, and on Linux (Ubuntu 24.04 under WSL2 on the same PC).
 
 #### Highlights
 
@@ -25,6 +26,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK) and on Wind
 | 🎮 | Half-Life (XashPS5, Uplink demo) reaches its first map on macOS with #17611 and on Windows / RTX 2060 at 60 FPS ([#25658](https://github.com/boykopovar/AnyPS5/pull/25658), merged) |
 | 🔍 | PS5SX2 at its language screen (~10 FPS, Windows / RTX 2060): measured where the frame goes, 38 GPU round trips per frame and per-draw snapshot copies on the draw committer, and that two open performance PRs leave it unchanged ([#25912](https://github.com/boykopovar/AnyPS5/issues/25912#issuecomment-7198082557)); the maintainer asked for PS5SX2 frame times in the future label-delivery PR |
 | 🧪 | `guest_net_ctl` abort on Windows reproduced in 1 of 94 runs on a 4-core CPU (the reporter saw 2 in 3000); the fix, [#27492](https://github.com/boykopovar/AnyPS5/pull/27492), cites those numbers ([#27408](https://github.com/boykopovar/AnyPS5/issues/27408)) |
+| 🧪 | First Linux run of [#25589](https://github.com/boykopovar/AnyPS5/pull/25589#pullrequestreview-6081352719): converting DOOM twice with `--module-dir .` fails on `main` the second time and works with the fix, with a byte-identical output |
 | 🔍 | Afterglow on NVIDIA: found that #25434 broke `APS5_ASYNC_PIPELINE_WORDS` ([#26186](https://github.com/boykopovar/AnyPS5/issues/26186)); the maintainer's fix keeps it running in 2 of 2 runs ([review](https://github.com/boykopovar/AnyPS5/pull/26196#pullrequestreview-6023222290)) |
 | 🧪 | 8 titles that stop on mesh shaders start on macOS with #17611 ([review](https://github.com/boykopovar/AnyPS5/pull/17611#pullrequestreview-6006646487)) |
 | 🧪 | Clone Hero: Encore, first report in AnyPS5: plays at ~120 FPS on Windows / RTX 2060 ([report](https://github.com/boykopovar/AnyPS5/discussions/23570)) |

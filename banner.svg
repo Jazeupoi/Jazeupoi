@@ -14,7 +14,7 @@
   <rect width="1000" height="180" rx="14" fill="url(#bg)"/>
   <rect width="1000" height="180" rx="14" fill="url(#grid)"/>
   <g clip-path="url(#type)">
-    <text x="500" y="102" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="36" font-weight="600" fill="#7ee2a8">&gt; C++ · macOS · Windows</text>
+    <text x="500" y="102" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="36" font-weight="600" fill="#7ee2a8">&gt; C++ · macOS · Windows<gt; C++ · macOS · Windows · Linux</text>
   </g>
   <rect x="252" y="76" width="4" height="34" fill="#7ee2a8">
     <animate attributeName="x" dur="3s" begin="0.4s" fill="freeze" calcMode="discrete"
