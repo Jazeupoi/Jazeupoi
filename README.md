@@ -36,7 +36,6 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK), on Windows
 | | Pull request | What it does |
 |---|---|---|
 | 👍 | [#22572](https://github.com/boykopovar/AnyPS5/pull/22572) | AGC: reject command-buffer jump loops at once (`agc_driver` 24–194 s → 12 s on Windows) |
-| 👍 | [#24201](https://github.com/boykopovar/AnyPS5/pull/24201) | Shader: a barrier before a scratch pool slot is released on MoltenVK (`agc_driver_scratch_pool` failed 17 of 20 runs on the M4; 50 of 50 pass) |
 | 👍 | [#24311](https://github.com/boykopovar/AnyPS5/pull/24311) | `guest_math`: read only the standard exception flags (failed on every macOS run) |
 | 👍 | [#24967](https://github.com/boykopovar/AnyPS5/pull/24967) | Relinker: macOS loads games at 0x400000 like Linux and Windows (Ruffle Flash no longer crashes when its imports load); a reviewer's edge case for low `--macos-fixed-base` addresses is fixed and tested |
 | 🔧 | [#25017](https://github.com/boykopovar/AnyPS5/pull/25017) | libkernel: `SOCK_SEQPACKET` socketpairs on macOS (Parallax Browser stopped 2 s after launch; now gets past its socket probe); approved on its latest head by one reviewer (the other's requested changes are pushed, waiting for re-review), it is [merged with today's `main`](https://github.com/boykopovar/AnyPS5/pull/25017#issuecomment-7192220721), and [two automated-review findings are fixed](https://github.com/boykopovar/AnyPS5/pull/25017#issuecomment-7195481276): end of file waits for sends still in flight, and descriptor-passing sends check the queue on macOS (200 of 200 test runs on macOS and Windows; the new check fails 3 of 3 without the fix) |
@@ -44,15 +43,16 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK), on Windows
 | 👍 | [#26593](https://github.com/boykopovar/AnyPS5/pull/26593) | Shader: an image the same shader stores to is read back through its storage binding, so the load sees the new value (6 formats tested on Windows / RTX 2060 and RTX 4070, and validated by another contributor on an RTX 5070 Ti with a negative control; the test skips them on GPUs that can't read them this way) |
 | 👍 | [#26600](https://github.com/boykopovar/AnyPS5/pull/26600) | AGC: NGG vertex programs can draw line lists (PS5SX2 stopped as soon as its PS2 system menu started; with #27327, #26653 and #27140 it now reaches the BIOS language screen, 2 of 2 runs) |
 | 👍 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: memory hints inside the system reserved range are placed at the hint on Windows (ProsperoCraft's Java heap could not be reserved; now the JVM starts) |
-| 👍 | [#27801](https://github.com/boykopovar/AnyPS5/pull/27801) | libkernel: `sceKernelRaiseException` waits while the target thread blocks the signal and runs the handler when it unblocks it, as FreeBSD does, also through `sigsuspend` (a gap in the project's debt list; tested on Windows and Linux) |
+| 👍 | [#27801](https://github.com/boykopovar/AnyPS5/pull/27801) | libkernel: `sceKernelRaiseException` waits while the target thread blocks the signal and runs the handler when it unblocks it, as FreeBSD does, also through `sigsuspend` (a gap in the project's debt list; tested on Windows and Linux); [an automated-review race fixed](https://github.com/boykopovar/AnyPS5/pull/27801#discussion_r4722040890): the target thread checks its mask again before the handler runs (200 of 200 runs on Windows and Linux) |
 
 👍 approved · 🟡 in review · 🔧 changes made, waiting for re-review
 
 <details>
-<summary><b>Merged pull requests (13)</b></summary>
+<summary><b>Merged pull requests (14)</b></summary>
 
 | | Pull request | What it does |
 |---|---|---|
+| ✅ | [#24201](https://github.com/boykopovar/AnyPS5/pull/24201) | Shader: a barrier before a scratch pool slot is released on MoltenVK (`agc_driver_scratch_pool` failed 17 of 20 runs on the M4; 50 of 50 pass) |
 | ✅ | [#26653](https://github.com/boykopovar/AnyPS5/pull/26653) | libkernel: `SA_SIGINFO` handlers run for `SIGSEGV` and `SIGBUS` faults (PS5SX2's fastmem crashed 3 of 3 times as its PS2 system menu started; ran 8 min without an error; ProsperoCraft's Java runtime stopped in 5 of 5 downloads, now downloads all 576 MB); [merged with `main` after #27140](https://github.com/boykopovar/AnyPS5/pull/26653#issuecomment-7203255577); [review fixes](https://github.com/boykopovar/AnyPS5/pull/26653#issuecomment-7205520027): `si_code` matches between Windows and Linux (also for no-access pages) and the handler gets the thread's signal mask, tested on both (200 of 200 runs each; the new tests fail without the fixes); approved |
 | ✅ | [#25658](https://github.com/boykopovar/AnyPS5/pull/25658) | Shader: link user-data tails through copied pointers, branching bodies and geometry fronts (XashPS5 stopped at three shader tails; Half-Life now draws its first map). |
 | ✅ | [#25031](https://github.com/boykopovar/AnyPS5/pull/25031) | Relinker: macOS loads `.sprx` dependencies and `libkernel_sys` (Kodi stopped before starting; now runs its own code) |
