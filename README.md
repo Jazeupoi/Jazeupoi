@@ -44,6 +44,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK), on Windows
 | 👍 | [#26593](https://github.com/boykopovar/AnyPS5/pull/26593) | Shader: an image the same shader stores to is read back through its storage binding, so the load sees the new value (6 formats tested on Windows / RTX 2060 and RTX 4070, and validated by another contributor on an RTX 5070 Ti with a negative control; the test skips them on GPUs that can't read them this way) |
 | 👍 | [#26600](https://github.com/boykopovar/AnyPS5/pull/26600) | AGC: NGG vertex programs can draw line lists (PS5SX2 stopped as soon as its PS2 system menu started; with #27327, #26653 and #27140 it now reaches the BIOS language screen, 2 of 2 runs) |
 | 👍 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: memory hints inside the system reserved range are placed at the hint on Windows (ProsperoCraft's Java heap could not be reserved; now the JVM starts) |
+| 🟡 | [#27801](https://github.com/boykopovar/AnyPS5/pull/27801) | libkernel: `sceKernelRaiseException` waits while the target thread blocks the signal and runs the handler when it unblocks it, as FreeBSD does (a gap in the project's debt list) |
 
 👍 approved · 🟡 in review · 🔧 changes made, waiting for re-review
 
