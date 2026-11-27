@@ -43,16 +43,16 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK), on Windows
 | 👍 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints inside the unmappable range go to the top of the arena (Savage Wind crashed at startup; now starts and creates its Vulkan device); limited to macOS's sealed range after a reviewer's Windows run, with a Windows check |
 | 👍 | [#26593](https://github.com/boykopovar/AnyPS5/pull/26593) | Shader: an image the same shader stores to is read back through its storage binding, so the load sees the new value (6 formats tested on Windows / RTX 2060 and RTX 4070, and validated by another contributor on an RTX 5070 Ti with a negative control; the test skips them on GPUs that can't read them this way) |
 | 👍 | [#26600](https://github.com/boykopovar/AnyPS5/pull/26600) | AGC: NGG vertex programs can draw line lists (PS5SX2 stopped as soon as its PS2 system menu started; with #27327, #26653 and #27140 it now reaches the BIOS language screen, 2 of 2 runs) |
-| 👍 | [#26653](https://github.com/boykopovar/AnyPS5/pull/26653) | libkernel: `SA_SIGINFO` handlers run for `SIGSEGV` and `SIGBUS` faults (PS5SX2's fastmem crashed 3 of 3 times as its PS2 system menu started; ran 8 min without an error; ProsperoCraft's Java runtime stopped in 5 of 5 downloads, now downloads all 576 MB); [merged with `main` after #27140](https://github.com/boykopovar/AnyPS5/pull/26653#issuecomment-7203255577); [review fixes](https://github.com/boykopovar/AnyPS5/pull/26653#issuecomment-7205520027): `si_code` matches between Windows and Linux (also for no-access pages) and the handler gets the thread's signal mask, tested on both (200 of 200 runs each; the new tests fail without the fixes); approved |
 | 👍 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: memory hints inside the system reserved range are placed at the hint on Windows (ProsperoCraft's Java heap could not be reserved; now the JVM starts) |
 
 👍 approved · 🟡 in review · 🔧 changes made, waiting for re-review
 
 <details>
-<summary><b>Merged pull requests (12)</b></summary>
+<summary><b>Merged pull requests (13)</b></summary>
 
 | | Pull request | What it does |
 |---|---|---|
+| ✅ | [#26653](https://github.com/boykopovar/AnyPS5/pull/26653) | libkernel: `SA_SIGINFO` handlers run for `SIGSEGV` and `SIGBUS` faults (PS5SX2's fastmem crashed 3 of 3 times as its PS2 system menu started; ran 8 min without an error; ProsperoCraft's Java runtime stopped in 5 of 5 downloads, now downloads all 576 MB); [merged with `main` after #27140](https://github.com/boykopovar/AnyPS5/pull/26653#issuecomment-7203255577); [review fixes](https://github.com/boykopovar/AnyPS5/pull/26653#issuecomment-7205520027): `si_code` matches between Windows and Linux (also for no-access pages) and the handler gets the thread's signal mask, tested on both (200 of 200 runs each; the new tests fail without the fixes); approved |
 | ✅ | [#25658](https://github.com/boykopovar/AnyPS5/pull/25658) | Shader: link user-data tails through copied pointers, branching bodies and geometry fronts (XashPS5 stopped at three shader tails; Half-Life now draws its first map). |
 | ✅ | [#25031](https://github.com/boykopovar/AnyPS5/pull/25031) | Relinker: macOS loads `.sprx` dependencies and `libkernel_sys` (Kodi stopped before starting; now runs its own code) |
 | ✅ | [#25093](https://github.com/boykopovar/AnyPS5/pull/25093) | libwebrtc: `main` builds again with Apple clang (a `const` cast in `RtpPacketReceived` stopped the macOS build) |
