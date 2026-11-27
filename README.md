@@ -25,11 +25,12 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK), on Windows
 | 🎮 | Half-Life (XashPS5) reaches its first map on macOS (with #17611) and on Windows at 60 FPS ([#25658](https://github.com/boykopovar/AnyPS5/pull/25658), merged) |
 
 <details>
-<summary><b>More results (6)</b></summary>
+<summary><b>More results (7)</b></summary>
 
 | | Result |
 |---|---|
 | 🎮 | Savage Wind (Breath of the Wild port) no longer crashes at startup on macOS ([#25091](https://github.com/boykopovar/AnyPS5/pull/25091)) |
+| 🔍 | GBCXY (Game Boy emulator) freeze traced to the known use-after-free of #8648: a third title, and it hangs instead of stopping ([comment](https://github.com/boykopovar/AnyPS5/issues/8648#issuecomment-7230452401)) |
 | 🔍 | PS5SX2 frame time measured: 38 GPU round trips per frame, and a fast/slow start mode ([#25912](https://github.com/boykopovar/AnyPS5/issues/25912#issuecomment-7216827537)) |
 | 🔍 | Afterglow on NVIDIA: found the change that broke `APS5_ASYNC_PIPELINE_WORDS` ([#26186](https://github.com/boykopovar/AnyPS5/issues/26186)) |
 | 🧪 | `guest_net_ctl` abort reproduced on Windows; the fix cites the numbers ([#27408](https://github.com/boykopovar/AnyPS5/issues/27408)) |
