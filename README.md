@@ -50,7 +50,7 @@ Building, testing and fixing it on an Apple M4 (Rosetta 2, MoltenVK), on Windows
 | 👍 | [#25091](https://github.com/boykopovar/AnyPS5/pull/25091) | libc: macOS memory hints in the sealed range go to the top of the arena (Savage Wind starts) |
 | 👍 | [#26593](https://github.com/boykopovar/AnyPS5/pull/26593) | Shader: an image a shader stores to is read back through its storage binding |
 | 👍 | [#26600](https://github.com/boykopovar/AnyPS5/pull/26600) | AGC: NGG vertex programs draw line lists (PS5SX2's PS2 menu) |
-| 🔧 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: Windows memory hints in the system reserved range are placed at the hint (ProsperoCraft's JVM starts) |
+| 👍 | [#27330](https://github.com/boykopovar/AnyPS5/pull/27330) | libc: Windows memory hints in the system reserved range are placed at the hint (ProsperoCraft's JVM starts) |
 | 🔧 | [#27801](https://github.com/boykopovar/AnyPS5/pull/27801) | libkernel: `sceKernelRaiseException` waits while the target thread blocks the signal |
 
 👍 approved · 🟡 in review · 🔧 changes made, waiting for re-review
